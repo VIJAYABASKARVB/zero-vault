@@ -9,15 +9,17 @@ export const inngest = new Inngest({
 
 //creating in the database
 const syncUser = inngest.createFunction(
-  {id:"sync-user"},  // Function config (first argument)
-  {event:"clerk/user.created"},  // Event trigger (second argument)
-  async({event})=>{  // Handler function (third argument)
+  {
+    id: "sync-user",
+    triggers: { event: "clerk/user.created" }
+  },
+  async({event}) => {
     await connectDB()
-    const {id,email_addresses} = event.data;
+    const {id, email_addresses} = event.data;
 
     const newUser = {
-      clerkId:id,
-      email:email_addresses[0]?.email_address,
+      clerkId: id,
+      email: email_addresses[0]?.email_address,
     }
 
     await User.create(newUser);
@@ -26,13 +28,15 @@ const syncUser = inngest.createFunction(
 
 //Deletion in the DataBase
 const deleteUser = inngest.createFunction(
-  {id:"delete-user-from-DB"},  // Function config (first argument)
-  {event:"clerk/user.deleted"},  // Event trigger (second argument)
-  async({event})=>{  // Handler function (third argument)
+  {
+    id: "delete-user-from-DB",
+    triggers: { event: "clerk/user.deleted" }
+  },
+  async({event}) => {
     await connectDB()
     const {id} = event.data;
     await User.findOneAndDelete({
-      clerkId:id
+      clerkId: id
     })
   }
 )
