@@ -2,7 +2,9 @@ import express from "express"
 import dotenv from "dotenv"
 import { connectDB } from "./src/config/db.js"
 import { clerkMiddleware,clerkClient,getAuth} from '@clerk/express'
-import { inngest } from "./src/config/inngest.js";
+import cors from "cors";
+import { serve } from "inngest/express";  
+import { inngest, functions } from "./src/config/inngest.js"; 
 
 dotenv.config();
 
@@ -12,7 +14,7 @@ app.use(express.json());
 app.use(cors({origin:process.env.FRONTEND_URL}));
 app.use(clerkMiddleware());
 
-app.use("api/inngest",serve({client:inngest,functions}))
+app.use("/api/inngest", serve({ client: inngest, functions }));
 
 connectDB();
 
