@@ -7,7 +7,7 @@ const vaultEntrySchema = new mongoose.Schema({
     trim:true
   },
 
-  usename:{
+  username:{
     type:String,
     required:true
   },

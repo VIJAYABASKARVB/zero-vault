@@ -1,0 +1,41 @@
+import {Inngest} from "inngest"
+import { connectDB } from "./db"
+import User from "../models/User.js"
+import { clerkClient } from "@clerk/express"
+
+export const inngest = new Inngest({
+  id: "Zero Vault"
+})
+
+
+//creating in the database
+const syncUser = inngest.createFunction(
+  {id:"sync-user"},
+  {event:"clerk/user.created"},
+  async({event})=>{
+    await connectDB()
+    const {id,email_addresses,} = event.data;
+
+    const newUser = {
+      clerkId:id,
+      email:email_addresses[0]?.email_address,
+    }
+
+    await User.create(newUser);
+  }
+)
+
+//Deletion in the DataBase
+const deleteUser = inngest.createFunction(
+  {id:"delete-user-from-DB"},
+  {event:"clerk/user.deleted"},
+  async({event})=>{
+    await connectDB()
+    const {id} = event.data;
+    await User.findOneAndDelete({
+      clerkId:id
+    })
+  }
+)
+
+export const functions = [syncUser,deleteUser]
