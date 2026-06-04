@@ -8,11 +8,11 @@ const userSchema = new  mongoose.Schema({
     },
     masterPasswordHash:{
       type:String,
-      required:true
+      default: null
     },
     salt:{
       type:String,
-      required:true
+      default: null
     },
   },
   { timestamps: true },
