@@ -7,14 +7,13 @@ export const inngest = new Inngest({
   id: "Zero Vault"
 })
 
-
 //creating in the database
 const syncUser = inngest.createFunction(
-  {id:"sync-user"},
-  {event:"clerk/user.created"},
-  async({event})=>{
+  {id:"sync-user"},  // Function config (first argument)
+  {event:"clerk/user.created"},  // Event trigger (second argument)
+  async({event})=>{  // Handler function (third argument)
     await connectDB()
-    const {id,email_addresses,} = event.data;
+    const {id,email_addresses} = event.data;
 
     const newUser = {
       clerkId:id,
@@ -27,9 +26,9 @@ const syncUser = inngest.createFunction(
 
 //Deletion in the DataBase
 const deleteUser = inngest.createFunction(
-  {id:"delete-user-from-DB"},
-  {event:"clerk/user.deleted"},
-  async({event})=>{
+  {id:"delete-user-from-DB"},  // Function config (first argument)
+  {event:"clerk/user.deleted"},  // Event trigger (second argument)
+  async({event})=>{  // Handler function (third argument)
     await connectDB()
     const {id} = event.data;
     await User.findOneAndDelete({
@@ -38,4 +37,4 @@ const deleteUser = inngest.createFunction(
   }
 )
 
-export const functions = [syncUser,deleteUser]
+export const functions = [syncUser, deleteUser]
