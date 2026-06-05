@@ -11,7 +11,14 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin:process.env.FRONTEND_URL}));
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || origin.endsWith('.vercel.app') || origin === process.env.FRONTEND_URL) {
+      return callback(null, true)
+    }
+    callback(null, false)
+  }
+}));
 app.use(clerkMiddleware());
 
 app.use("/api/inngest", serve({ client: inngest, functions }));
