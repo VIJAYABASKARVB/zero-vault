@@ -1,30 +1,23 @@
 import './App.css'
-import { Show, SignInButton, SignUpButton, UserButton, useAuth } from '@clerk/react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+import HomePage from './pages/HomePage'
+import DashboardPage from './pages/DashboardPage'
 
 function App() {
-  const { getToken } = useAuth()
 
-  const testProtectedRoute = async () => {
-    const token = await getToken()
-    const res = await fetch('https://zero-vault-five.vercel.app/protected', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    const text = await res.text()
-    console.log(text)
-  }
+  //from the ClerkProvider
+  const { isSignedIn,isLoaded} = useUser();
+
+  //To avoid the flickring Effect
+  if(!isLoaded) return null;
 
   return (
     <>
-      <header>
-        <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton />
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-          <button onClick={testProtectedRoute}>Test Protected Route</button>
-        </Show>
-      </header>
+      <Routes>
+        <Route path="/" element={!isSignedIn ? <HomePage /> : <Navigate to={"/dashboard"}/>} />
+        <Route path='/dashboard' element={isSignedIn ? <DashboardPage/> : <Navigate to={"/"}/>}/>
+      </Routes>
     </>
   )
 }

@@ -1,10 +1,13 @@
 import express from "express"
 import dotenv from "dotenv"
 import { connectDB } from "./src/config/db.js"
-import { clerkMiddleware,requireAuth,getAuth} from '@clerk/express'
+import { clerkMiddleware,getAuth} from '@clerk/express'
 import cors from "cors";
 import { serve } from "inngest/express";  
 import { inngest, functions } from "./src/config/inngest.js"; 
+import { requireAuth } from './src/middleware/auth.middleware.js'
+import userRouter from "./src/routes/user.routes.js";
+import vaultRouter from "./src/routes/vault.routes.js";
 
 dotenv.config();
 
@@ -33,11 +36,9 @@ app.get('/',(req,res)=>{
   res.send("Hello World");
 });
 
-// Apply middleware to a specific route
-// Redirects to the homepage if the user is not authenticated
-app.get('/protected', requireAuth(), (req, res) => {
-  res.send('This is a protected route.')
-})
+
+app.use("/api/user", requireAuth, userRouter);
+app.use("/api/vault", requireAuth, vaultRouter);
 
 app.listen(3000,() => {
   console.log(`Server is running on port : http://localhost:3000`);
