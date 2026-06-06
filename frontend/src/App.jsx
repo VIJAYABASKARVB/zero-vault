@@ -1,4 +1,3 @@
-import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import HomePage from './pages/HomePage'
