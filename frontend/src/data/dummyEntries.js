@@ -5,6 +5,7 @@ const dummyEntries = [
     username: 'john@gmail.com',
     password: 'Pass123!',
     url: 'gmail.com',
+    category: 'Personal',
     notes: 'Primary email',
     iv: 'a1b2c3d4e5f6a1b2c3d4e5f6'
   },
@@ -14,6 +15,7 @@ const dummyEntries = [
     username: 'john.doe',
     password: 'netflix2024',
     url: 'netflix.com',
+    category: 'Personal',
     notes: '',
     iv: 'b2c3d4e5f6a1b2c3d4e5f6a1'
   },
@@ -23,6 +25,7 @@ const dummyEntries = [
     username: 'johndoe',
     password: 'BankPass!456',
     url: 'chase.com',
+    category: 'Finance',
     notes: 'Checking account',
     iv: 'c3d4e5f6a1b2c3d4e5f6a1b2'
   },
@@ -32,6 +35,7 @@ const dummyEntries = [
     username: 'johndoe',
     password: 'gh_token_abc',
     url: 'github.com',
+    category: 'Developer',
     notes: '',
     iv: 'd4e5f6a1b2c3d4e5f6a1b2c3'
   },
@@ -41,6 +45,7 @@ const dummyEntries = [
     username: 'john@gmail.com',
     password: 'music123',
     url: 'spotify.com',
+    category: 'Personal',
     notes: 'Family plan',
     iv: 'e5f6a1b2c3d4e5f6a1b2c3d4'
   },
@@ -50,6 +55,7 @@ const dummyEntries = [
     username: 'john.admin',
     password: 'Aws!Admin#789',
     url: 'aws.amazon.com',
+    category: 'Developer',
     notes: 'Root account',
     iv: 'f6a1b2c3d4e5f6a1b2c3d4e5'
   },
@@ -59,6 +65,7 @@ const dummyEntries = [
     username: '@johndoe',
     password: 'insta_pass',
     url: 'instagram.com',
+    category: 'Personal',
     notes: '',
     iv: 'a1b2c3d4e5f6a1b2c3d4e5f7'
   },
@@ -68,6 +75,7 @@ const dummyEntries = [
     username: 'john@company.com',
     password: 'WorkPass!2024',
     url: 'outlook.office.com',
+    category: 'Work',
     notes: 'Office 365',
     iv: 'b2c3d4e5f6a1b2c3d4e5f6a8'
   }

@@ -5,7 +5,15 @@ body {
   font-family: var(--default-font-family);
 }
 
-
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 @theme {
   --default-font-family: "Geist", sans-serif;

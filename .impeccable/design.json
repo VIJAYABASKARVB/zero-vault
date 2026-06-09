@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-09T20:51:00.000Z",
+  "title": "Design System: Zero Vault",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Vault Green",
+        "canonical": "#008B1E",
+        "tonalRamp": ["#00280a", "#004513", "#00631c", "#00801e", "#008B1E", "#33a84e", "#66c47e", "#99e0ae"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Observatory Black",
+        "canonical": "#121414",
+        "tonalRamp": ["#030404", "#070909", "#0c0e0e", "#0f1111", "#121414", "#2a2e2e", "#424848", "#5a6262"]
+      },
+      "neutral-surface": {
+        "role": "neutral",
+        "displayName": "Panel Dark",
+        "canonical": "#1a1d1e",
+        "tonalRamp": ["#050606", "#0b0d0d", "#101314", "#161819", "#1a1d1e", "#323638", "#4a4f52", "#62686c"]
+      },
+      "neutral-elevated": {
+        "role": "neutral",
+        "displayName": "Deep Void",
+        "canonical": "#0a0c0d",
+        "tonalRamp": ["#010202", "#040505", "#060809", "#080a0b", "#0a0c0d", "#222627", "#3a4042", "#525a5c"]
+      },
+      "neutral-border": {
+        "role": "neutral",
+        "displayName": "Zinc Edge",
+        "canonical": "#3f3f46",
+        "tonalRamp": ["#0e0e10", "#1c1c1f", "#2a2a2e", "#35353a", "#3f3f46", "#56565d", "#6d6d74", "#84848b"]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error Red",
+        "canonical": "#ef4444",
+        "tonalRamp": ["#4a0a0a", "#7d1515", "#b02020", "#d73535", "#ef4444", "#f27070", "#f59c9c", "#f9c8c8"]
+      },
+      "accent-work": {
+        "role": "accent",
+        "displayName": "Work Blue",
+        "canonical": "#60A5FA",
+        "tonalRamp": ["#0a2a5c", "#124685", "#1a63ae", "#2880d7", "#60A5FA", "#84bcfb", "#a8d2fc", "#cce8fd"]
+      },
+      "accent-personal": {
+        "role": "accent",
+        "displayName": "Personal Green",
+        "canonical": "#34D399",
+        "tonalRamp": ["#063d29", "#0a6646", "#0f8f63", "#14b880", "#34D399", "#62dfb0", "#90ebc7", "#bef7de"]
+      },
+      "accent-finance": {
+        "role": "accent",
+        "displayName": "Finance Amber",
+        "canonical": "#FBBF24",
+        "tonalRamp": ["#4d3700", "#805e00", "#b38500", "#e6ab00", "#FBBF24", "#fccf5a", "#fddf90", "#feefc5"]
+      },
+      "accent-developer": {
+        "role": "accent",
+        "displayName": "Developer Purple",
+        "canonical": "#A78BFA",
+        "tonalRamp": ["#2a157a", "#4325af", "#5c36e3", "#8168f1", "#A78BFA", "#bda6fb", "#d3c1fc", "#e9dcfd"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Landing page hero headline only. Never used inside the vault."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headers, modal titles, vault header."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card labels, entry names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Most text. Max line length 65-75ch on landing page."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Button text, tab labels, form labels, metadata, badges. Always JetBrains Mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "fab-rest",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2)",
+        "purpose": "Floating action button resting state."
+      },
+      {
+        "name": "fab-hover",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        "purpose": "Floating action button hover state (shadow-2xl)."
+      },
+      {
+        "name": "hero-glow",
+        "value": "0 10px 15px -3px rgba(0, 139, 30, 0.2)",
+        "purpose": "Landing page hero image ambient glow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "200ms ease-out",
+        "purpose": "Default transition for state changes: hover, focus, opacity shifts."
+      },
+      {
+        "name": "fab-scale",
+        "value": "200ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "FAB hover scale-up with overshoot for tactile feel."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Vault Green filled button for primary actions: Save, Create, Unlock, Copy.",
+      "html": "<button class=\"ds-btn-primary\">Save Entry</button>",
+      "css": ".ds-btn-primary { background: #008B1E; color: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 200ms ease-out; } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:focus-visible { outline: 2px solid #008B1E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Vault Green outlined button for secondary actions: Register, Get Started.",
+      "html": "<button class=\"ds-btn-outline\">Get Started</button>",
+      "css": ".ds-btn-outline { background: transparent; color: #008B1E; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: 2px solid #008B1E; border-radius: 8px; cursor: pointer; transition: opacity 200ms ease-out; } .ds-btn-outline:hover { opacity: 0.8; } .ds-btn-outline:focus-visible { outline: 2px solid #008B1E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Red filled button for destructive actions: Delete.",
+      "html": "<button class=\"ds-btn-danger\">Delete</button>",
+      "css": ".ds-btn-danger { background: #dc2626; color: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; transition: background 200ms ease-out; } .ds-btn-danger:hover { background: #b91c1c; } .ds-btn-danger:focus-visible { outline: 2px solid #dc2626; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent button for tertiary actions: Cancel, Login.",
+      "html": "<button class=\"ds-btn-ghost\">Cancel</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #9CA3AF; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: 1px solid #3f3f46; border-radius: 8px; cursor: pointer; transition: color 200ms ease-out; } .ds-btn-ghost:hover { color: #ffffff; } .ds-btn-ghost:focus-visible { outline: 2px solid #008B1E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Flat dark input field for forms and search.",
+      "html": "<div style=\"display:flex;flex-direction:column;gap:6px;width:280px\"><label class=\"ds-label\" for=\"demo-input\">Username / Email</label><input id=\"demo-input\" class=\"ds-input\" type=\"text\" placeholder=\"user@example.com\" /></div>",
+      "css": ".ds-label { font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 0.875rem; color: #9CA3AF; } .ds-input { background: #121414; color: #ffffff; font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 1rem; padding: 8px 12px; border: 1px solid #3f3f46; border-radius: 8px; outline: none; transition: border-color 200ms ease-out; } .ds-input::placeholder { color: #6B7280; } .ds-input:focus { border-color: #008B1E; } .ds-input:hover { border-color: #52525b; }"
+    },
+    {
+      "name": "Entry Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Individual password entry card in the vault grid.",
+      "html": "<div class=\"ds-card\"><div style=\"display:flex;align-items:center;gap:8px;margin-bottom:4px\"><h3 class=\"ds-card-title\">GitHub</h3><span class=\"ds-badge ds-badge-dev\">Developer</span></div><div style=\"display:flex;justify-content:space-between;margin-bottom:16px\"><span class=\"ds-card-username\">johndoe</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#9CA3AF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"cursor:pointer\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path></svg></div><div style=\"margin-bottom:12px\"><div style=\"display:flex;justify-content:space-between;margin-bottom:4px\"><span class=\"ds-card-label\">Strength</span><span class=\"ds-card-label\">70%</span></div><div class=\"ds-str-track\"><div class=\"ds-str-fill ds-str-strong\" style=\"width:70%\"></div></div></div><button class=\"ds-btn-copy\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path></svg> Copy</button></div>",
+      "css": ".ds-card { background: transparent; border: 0.5px solid #3f3f46; border-radius: 8px; padding: 16px; position: relative; } .ds-card-title { font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 1.25rem; font-weight: 600; color: #ffffff; margin: 0; } .ds-card-username { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; color: #9CA3AF; } .ds-card-label { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.75rem; color: #ffffff; } .ds-badge { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.75rem; padding: 2px 8px; border-radius: 9999px; font-weight: 500; } .ds-badge-dev { background: rgba(168,85,247,0.2); color: #A78BFA; } .ds-str-track { width: 100%; background: #1F1F1F; border-radius: 9999px; height: 8px; overflow: hidden; } .ds-str-fill { height: 8px; border-radius: 9999px; transition: width 200ms ease-out; } .ds-str-strong { background: #008B1E; } .ds-btn-copy { display: flex; align-items: center; gap: 8px; width: 100%; justify-content: center; background: #008B1E; color: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 200ms ease-out; } .ds-btn-copy:hover { opacity: 0.9; }"
+    },
+    {
+      "name": "Modal Dialog",
+      "kind": "card",
+      "refersTo": "modal",
+      "description": "Overlay dialog for Add/Edit entry and Confirm delete.",
+      "html": "<div style=\"position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-family:'Geist','Inter',system-ui,sans-serif\"><div class=\"ds-modal\"><div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:24px\"><h2 class=\"ds-modal-title\">Add Entry</h2><button class=\"ds-modal-close\">&times;</button></div><div style=\"display:flex;flex-direction:column;gap:6px;margin-bottom:16px\"><label class=\"ds-label\">Label / Site Name <span style=\"color:#ef4444\">*</span></label><input class=\"ds-input\" type=\"text\" placeholder=\"e.g., GitHub Personal\" /></div><div style=\"display:flex;gap:8px;justify-content:flex-end;margin-top:24px\"><button class=\"ds-btn-ghost\">Cancel</button><button class=\"ds-btn-primary\">Save Entry</button></div></div></div>",
+      "css": ".ds-modal { background: #1a1d1e; border-radius: 12px; width: 480px; max-height: 90vh; overflow-y: auto; padding: 24px; } .ds-modal-title { font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 1.25rem; font-weight: 600; color: #ffffff; margin: 0; } .ds-modal-close { background: none; border: none; color: #9CA3AF; font-size: 1.5rem; cursor: pointer; padding: 0; line-height: 1; } .ds-modal-close:hover { color: #ffffff; } .ds-label { font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 0.875rem; color: #9CA3AF; } .ds-input { background: #121414; color: #ffffff; font-family: 'Geist', 'Inter', system-ui, sans-serif; font-size: 1rem; padding: 8px 12px; border: 1px solid #3f3f46; border-radius: 8px; outline: none; } .ds-input::placeholder { color: #6B7280; } .ds-input:focus { border-color: #008B1E; } .ds-btn-ghost { background: transparent; color: #9CA3AF; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: 1px solid #3f3f46; border-radius: 8px; cursor: pointer; } .ds-btn-ghost:hover { color: #ffffff; } .ds-btn-primary { background: #008B1E; color: #ffffff; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; } .ds-btn-primary:hover { opacity: 0.9; }"
+    },
+    {
+      "name": "Category Tab",
+      "kind": "nav",
+      "refersTo": "tab-active",
+      "description": "Filter tabs for vault categories: All, Work, Personal, Finance, Developer.",
+      "html": "<div style=\"display:flex;gap:8px\"><button class=\"ds-tab ds-tab-active\">All</button><button class=\"ds-tab\">Work</button><button class=\"ds-tab\">Personal</button><button class=\"ds-tab\">Finance</button><button class=\"ds-tab\">Developer</button></div>",
+      "css": ".ds-tab { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 0.875rem; font-weight: 500; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; background: transparent; color: #9CA3AF; transition: background 200ms ease-out, color 200ms ease-out; } .ds-tab:hover { background: rgba(255,255,255,0.1); color: #ffffff; } .ds-tab-active { background: #008B1E; color: #ffffff; } .ds-tab-active:hover { background: #008B1E; color: #ffffff; }"
+    },
+    {
+      "name": "FAB (Add Entry)",
+      "kind": "button",
+      "refersTo": "fab",
+      "description": "Floating action button for adding new password entries.",
+      "html": "<button class=\"ds-fab\" aria-label=\"Add Entry\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line></svg></button>",
+      "css": ".ds-fab { position: fixed; bottom: 32px; right: 32px; width: 56px; height: 56px; background: #008B1E; color: #ffffff; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2); transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 200ms ease-out; z-index: 50; } .ds-fab:hover { transform: scale(1.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); } .ds-fab:focus-visible { outline: 2px solid #008B1E; outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Dark Observatory",
+    "overview": "Zero Vault is a dark, precision-engineered interface for managing secrets. The atmosphere is clinical without being cold: dark surfaces (#121414) absorb attention, Vault Green (#008B1E) provides the single point of visual conviction. Every element exists for a reason. There is no decoration, no gradient, no glass. Just structure, hierarchy, and the quiet confidence of a system that knows exactly what it protects.\n\nThe design treats the user as technically literate. Copy is direct. Feedback is immediate. The master password screen is not a marketing moment; it is a security ritual performed in calm, deliberate steps.",
+    "keyCharacteristics": [
+      "Single accent color used sparingly and deliberately (Vault Green on ≤10% of surfaces)",
+      "Flat by default, depth via tonal background shifts and thin borders",
+      "Mono-forward typography for technical touchpoints (search, buttons, copy)",
+      "Zero decorative flourishes: no gradients, no glass, no illustrated embellishments"
+    ],
+    "rules": [
+      { "name": "The Single Voice Rule", "body": "Vault Green is the only accent. Category colors exist as badge-only tints. If a screen uses more than Vault Green + one category color, something is wrong.", "section": "colors" },
+      { "name": "The Mono Touch Rule", "body": "JetBrains Mono is used for any text the user acts on: buttons, search input, copy actions, category tabs. Geist is for reading. JetBrains Mono is for doing.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, elevation change) or special affordance (FAB). Cards, modals, and panels never carry a resting shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Vault Green sparingly. One accent element per screen region. If the search border is green, the button shouldn't also compete.",
+      "Do use JetBrains Mono for all interactive text: buttons, search, tabs, copy actions.",
+      "Do use tonal layering for depth: shift background color, not elevation.",
+      "Do keep the master password screen minimal. No branding flourishes, no illustrations. A form, a title, and a button.",
+      "Do show encryption state transparently. Let the user see that their vault is locked, deriving, or ready."
+    ],
+    "donts": [
+      "Don't use gradient text, glassmorphism, or backdrop blurs beyond the navbar.",
+      "Don't use side-stripe borders (border-left/right > 1px as an accent). Use full borders or background shifts.",
+      "Don't use illustrated icons or emoji. Use clean line icons (react-icons, Heroicons-style).",
+      "Don't wrap everything in a container card. Cards are for entries; most layout elements don't need one.",
+      "Don't use modals as a first thought. Exhaust inline alternatives before overlaying.",
+      "Don't use em dashes in copy. Use commas, colons, or periods.",
+      "Don't use neon-on-black cyber aesthetics. This is a Dark Observatory, not a gaming terminal.",
+      "Don't use placeholder profile images or generic avatars. Clerk's UserButton handles identity."
+    ]
+  }
+}
