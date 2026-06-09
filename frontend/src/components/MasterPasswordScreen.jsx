@@ -65,9 +65,9 @@ function MasterPasswordScreen({mode,encryptionConfig,onUnlock,onSetup}) {
     
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-[#0a0c0d]'>
+    <div className='flex items-center justify-center min-h-screen bg-[#0a0c0d] p-3 sm:p-4'>
 
-      <div className='bg-[#1a1d1e] rounded-xl p-8 w-[400px]'>
+      <div className='bg-[#1a1d1e] rounded-xl p-6 sm:p-8 w-full sm:w-[400px] mx-auto'>
         <h1 className='text-2xl font-bold text-white text-center mb-2'>ZERO VAULT</h1>
         <p className='text-gray-400 text-center mb-4'>
           {mode == 'setup' ? 'Create your master password': 'Enter your master password to Unlock'}
@@ -103,7 +103,7 @@ function MasterPasswordScreen({mode,encryptionConfig,onUnlock,onSetup}) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#008B1E] text-white rounded-lg py-2.5 mt-2 hover:opacity-90 disabled:opacity-50 font-medium"
+            className="w-full bg-[#008B1E] text-white rounded-lg py-3 sm:py-2.5 mt-2 hover:opacity-90 disabled:opacity-50 font-medium min-h-[44px]"
           >
             {loading ? 'Please wait...' : mode === 'setup' ? 'Create Vault' : 'Unlock Vault'}
           </button>

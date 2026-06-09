@@ -22,6 +22,12 @@ const vaultEntrySchema = new mongoose.Schema({
     default:"",
   },
 
+  category:{
+    type:String,
+    enum:['Work','Personal','Finance','Developer'],
+    default:'Personal'
+  },
+
   notes:{
     type:String,
     default:""

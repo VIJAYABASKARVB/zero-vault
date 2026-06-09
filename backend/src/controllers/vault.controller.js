@@ -49,8 +49,8 @@ export const addEntry = async (req, res) => {
       })
   }
 
-  // 5. Destructure body: { label, username, password, url, notes, iv }
-  const { label, username, password, url, notes, iv } = req.body;
+  // 5. Destructure body: { label, username, password, url, category, notes, iv }
+  const { label, username, password, url, category, notes, iv } = req.body;
 
   // 6. Push new entry to vault.Entries array
   vault.Entries.push({
@@ -58,6 +58,7 @@ export const addEntry = async (req, res) => {
     username,
     password,
     url,
+    category,
     notes,
     iv
   })
@@ -92,13 +93,14 @@ export const updateEntry = async (req, res) => {
     return res.status(404).json({error:"Entry not found"})
   }
 
-  // 5. Update allowed fields: label, username, password, url, notes, iv
-  const {label,username,password,url,notes,iv} = req.body;
+  // 5. Update allowed fields: label, username, password, url, category, notes, iv
+  const {label,username,password,url,category,notes,iv} = req.body;
   
   if(label) entry.label=label;
   if(username) entry.username=username;
   if(password) entry.password=password;
   if(url) entry.url=url;
+  if(category) entry.category=category;
   if(notes) entry.notes=notes;
   if(iv) entry.iv=iv;
   
