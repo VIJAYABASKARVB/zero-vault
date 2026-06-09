@@ -1,44 +1,44 @@
 import User from "../models/User.js";
 import Vault from "../models/Vault.js";
-import crypto from "crypto";
-import argon2 from "argon2";
 
-export const setupUser = async (req, res) => {
-
-  // 1. Get userId from Clerk
+export const getEncryptionConfig = async (req, res) => {
   const userId = req.auth.userId;
-
-  // 2. Find User by clerkId
-  const user = await User.findOne({
-        clerkId: userId
-  })
+  const user = await User.findOne({ clerkId: userId });
 
   if (!user) {
     return res.status(404).json({ error: "User not found" });
   }
-  
-  // 3. Check if masterPasswordHash already exists → return 400 if yes
-  if(user.masterPasswordHash){
-    return res.status(400).json({error : "Master Passwod is already set"});
+
+  res.status(200).json({
+    encryptionSalt: user.encryptionSalt || null,
+    verificationToken: user.verificationToken || null
+  });
+}
+
+
+export const setupEncryption = async (req, res) => {
+  const userId = req.auth.userId;
+  const user = await User.findOne({ clerkId: userId });
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
   }
 
-  // 4. Generate salt
-  const salt = crypto.randomBytes(16).toString("hex");
+  const { encryptionSalt, verificationToken } = req.body;
 
-  // 5. Hash password with argon2
-  const hash = await argon2.hash(req.body.masterPassword, { salt: Buffer.from(salt, "hex") })
+  if (!encryptionSalt || !verificationToken) {
+    return res.status(400).json({ error: "encryptionSalt and verificationToken are required" });
+  }
 
-  // 6. Save hash + salt
-  user.masterPasswordHash = hash;
-  user.salt = salt;
-  await user.save()
+  user.encryptionSalt = encryptionSalt;
+  user.verificationToken = verificationToken;
+  await user.save();
 
-  // 7. Create empty Vault
-  await Vault.create({
-    userId:user._id,
-    Entries: []
-  })
+  // Check if Vault exists, if not create one
+  const existingVault = await Vault.findOne({ userId: user._id });
+  if (!existingVault) {
+    await Vault.create({ userId: user._id, Entries: [] });
+  }
 
-  // 8. Return { salt }
-  res.status(200).json({ salt, message: "Master password setup complete" });
+  res.status(200).json({ success: true });
 }

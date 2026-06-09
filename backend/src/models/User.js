@@ -19,6 +19,14 @@ const userSchema = new  mongoose.Schema({
       type:String,
       default: null
     },
+    encryptionSalt:{
+      type:String,
+      default: null
+    },
+    verificationToken:{
+      type:String,
+      default: null
+    },
   },
   { timestamps: true },
 );
